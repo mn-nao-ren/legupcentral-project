@@ -1,0 +1,48 @@
+{% extends 'base.html' %} {% block content %} {% if error %} {{error}}
+<br />
+<br />
+
+{% endif %}
+
+<br />
+<h5>Sign Up for Student account</h5>
+
+<form method="POST" action="{% url 'studentsignup' %}">
+  {% csrf_token %} <b>Username: </b>
+  <br />
+  <input type="text" name="username" />
+  <br />
+  <br />
+
+  <b>Password:</b>
+  <br />
+  <input type="password" name="pwd1" />
+  <br />
+  <br />
+  <b>Confirm Password:</b>
+  <br />
+  <input type="password" name="pwd2" />
+  <br />
+
+  <br />
+  <b>
+    Leave your Skype, Telegram or email here, so that people who need your
+    tech-savvy help can contact you!</b
+  >
+
+  <br /><br />
+  <input type="text" name="recommendation" />
+  <br /><br />
+  <b>
+    For the professionals who decide to take you in and coach you with school
+    work, being willing to get in touch with them and helping them learn how to
+    use new tech tools demonstrates your sincerity, thus they will help you
+    sincerely as well.</b
+  >
+  <br />
+  <br />
+  <input class="btn btn-primary" type="submit" value="Sign Up!" />
+  <br />
+</form>
+
+{% endblock %}

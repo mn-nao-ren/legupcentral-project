@@ -1,0 +1,22 @@
+{% extends 'base.html' %} {% block content %} {% for squad in squads.all %}
+<div class="row pt-3">
+  <div class="col-2" onclick="window.location='{% url 'detail' squad.id %}';" style="cursor: pointer;">
+    <img src="{{ squad.icon.url }}" class="img-fluid" />
+  </div>
+  <div class="col-6" onclick="window.location='{% url 'detail' squad.id %}';" style="cursor: pointer;">
+    <h1>{{ squad.title }}</h1>
+    <p>{{ squad.summary }}</p>
+  </div>
+  <div class="col-4">
+    <a href="javascript:{document.getElementById('upvote{{ squad.id }}').submit()}"><button
+        class="btn btn-primary btn-lg btn-block">
+        <span class="oi oi-caret-top"></span> Upvote {{ squad.votes_total }}
+      </button></a>
+  </div>
+</div>
+
+<form id="upvote{{ squad.id }}" method="POST" action="{% url 'upvote' squad.id %}">
+  {% csrf_token%}
+  <input type="hidden" />
+</form>
+{% endfor %} {% endblock %}

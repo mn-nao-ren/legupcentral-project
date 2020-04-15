@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% load staticfiles %}
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+    <title>Leg-up Central</title>
+
+    <!-- Bootstrap core CSS -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <link
+      href="{% static 'open-iconic/font/css/open-iconic-bootstrap.css' %}"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        background: url('{% static "bg.jpg" %}') no-repeat center center fixed;
+
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        /*  background-image: url('{% static "static/background.jpg" %}'); */
+      }
+      footer {
+        position: fixed;
+        left: 10;
+        bottom: 0;
+        width: 100%;
+        background-color: black;
+        color: white;
+        text-align: center;
+        opacity: 50%;
+      }
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+          <a class="navbar-brand" href="{% url 'home' %}">
+            <img
+              src="{% static 'suit.png' %}"
+              height="30"
+              width="30"
+              class="d-inline-block align-top"
+            />
+            Leg-up Central
+          </a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav ml-auto">
+              {% if user.is_authenticated %}
+              <a class="nav-item nav-link" href="{% url 'create' %}"
+                ><span class="oi oi-plus"></span
+              ></a>
+              <a
+                class="nav-item nav-link"
+                href="javascript:{document.getElementById('logout').submit()}"
+                onclick=""
+                >Logout</a
+              >
+              <form id="logout" method="POST" action="{% url 'logout' %}">
+                {% csrf_token %}
+                <input type="hidden" />
+              </form>
+              {% else %}
+              <a class="nav-item nav-link" href="{% url 'choice' %}">Press here to Sign Up</a>
+              <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <div class="container">
+      {% block content %} {% endblock %}
+    </div>
+
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 mt-md-0 mt-3">
+            <br />
+            <br />
+            <br />
+            <br /><br />
+
+            <h5>
+              <small
+                >I connect the following people together and give them the
+                leg-up they want.</small
+              >
+            </h5>
+          </div>
+          <hr class="clearfix w-100 d-md-none pb-3" />
+          <div class="col-md-3 mb-md-0 mb-3">
+            <ul class="list-unstyled">
+              <li>
+                <br/>
+                <img
+                  class="img-responsive rounded-circle"
+                  src="{% static 'oldie.jpg' %}"
+                  width="240"
+                  height="160"
+                />
+              </li>
+            </ul>
+            <h5 >
+              <small>
+                Adult professional, desire productivity, 
+                need tech-savvy youngsters, aspiring mentor, sociable.
+              </small>
+            </h5>
+          </div>
+
+          <div class="col-md-3 mb-md-0 mb-3">
+            <ul class="list-unstyled">
+              <li>
+                <br/>
+                <img
+                  class="img-responsive rounded-circle"
+                  src="{% static 'ambitious.jpg' %}"
+                  width="240"
+                  height="160"
+                />
+              </li>
+            </ul>
+            <h5 >
+              <small>
+                Unhappy student, stressed out by school, finds education inadequate,
+                  researching for quality info and wants accomplishments.  
+              </small>
+            </h5>
+          </div>
+
+
+
+      </div>
+      <!-- "I'm a working adult who wants to feel successful, know how to use
+          difficult but effective digital tools, accomplish more with less
+          effort, become better with age (like good wine), and still popular
+          with younger folks."
+     
+          "I'm a student looking for info that teaches better than my school
+          notes, produce quality work easily and swiftly, and get useful
+          preparation for real, I mean, *REAL* world challenges." -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+  ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

@@ -1,0 +1,48 @@
+{% extends 'base.html' %} {% block content %} {% if error %} {{error}}
+<br />
+<br />
+
+{% endif %}
+
+<br />
+<h5>Sign Up for Working Adult account</h5>
+
+<form method="POST" action="{% url 'adultsignup' %}">
+  {% csrf_token %} <b>Type your preferred Username here: </b>
+  <br />
+  <input type="text" name="username" />
+  <br />
+  <br />
+
+  <b>Type your preferred Password here:</b>
+  <br />
+  <input type="password" name="pwd1" />
+  <br />
+  <br />
+  <b>Type that same Password again:</b>
+  <br />
+  <input type="password" name="pwd2" />
+  <br />
+
+  <br />
+  <b>
+    Briefly describe a book (or body of knowledge) you have found to be useful
+    in your profession but very little people know about it and school did not
+    teach you about it:</b
+  >
+
+  <br /><br />
+  <input type="text" name="recommendation" />
+  <br /><br />
+  <b>
+    For the youngsters who decide to help you with your tech-savvy, they will
+    find your recommendation to be sincere and thus help you sincerely as
+    well.</b
+  >
+  <br />
+  <br />
+  <input class="btn btn-primary" type="submit" value="Press here to sign up" />
+  <br />
+</form>
+
+{% endblock %}

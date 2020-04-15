@@ -1,0 +1,32 @@
+{% extends 'base.html' %} {% block content %}
+
+<br />
+<div class="text-center">
+  <br />
+  <br />
+  <form method="POST" action="{% url 'characterform' %}">
+    {% csrf_token %}
+    <br />
+    <h5>Type here:</h5>
+    <input id="chartype" type="text" name="chartype" />
+    <br />
+    <br />
+    <h1 class="text-center">
+      <small>
+        Are you a working adult (type "adult") or student (type
+        "student")?</small
+      >
+    </h1>
+    <br />
+
+    <br />
+
+    <input
+      class="btn btn-primary"
+      type="submit"
+      value="Press me to submit answer!"
+    />
+  </form>
+</div>
+
+{% endblock %}
